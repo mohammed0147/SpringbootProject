@@ -14,11 +14,6 @@ public class AlternativeContactsServiceimp implements AlternativeContactsService
 	@Autowired
 	private AlternativeContactsRepository alternativeContactsRepository;
 	
-	public AlternativeContactsServiceimp(AlternativeContactsRepository alternativeContactsRepository) {
-		this.alternativeContactsRepository=alternativeContactsRepository;
-	}
-	
-	
 	
 	@Override
 	public List<AlternativeContacts> listAll() {

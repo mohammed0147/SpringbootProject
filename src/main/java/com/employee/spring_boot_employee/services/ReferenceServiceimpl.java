@@ -7,13 +7,10 @@ import com.employee.spring_boot_employee.domain.Reference;
 import com.employee.spring_boot_employee.repositories.ReferenceRepository;
 
 public class ReferenceServiceimpl implements ReferenceService {
-	
+	@Autowired
 	private ReferenceRepository referenceRepository;
 	 
-	@Autowired
-	public ReferenceServiceimpl(ReferenceRepository referenceRepository) {
-		this.referenceRepository=referenceRepository;
-	}
+	
 	
 	@Override
 	public List<Reference> listAll() {

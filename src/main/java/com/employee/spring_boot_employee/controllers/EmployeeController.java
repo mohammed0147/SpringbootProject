@@ -20,7 +20,6 @@ import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 
 @RestController
 @RequestMapping("/api")
-
 public class EmployeeController {
 
 	@Autowired

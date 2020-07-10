@@ -10,15 +10,10 @@ import com.employee.spring_boot_employee.domain.Employee;
 import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 
 public class EmployeeServiceimpl implements EmployeeService {
+	
+	@Autowired
 	private EmployeeRepository employeeRepository;
 	
-
-	@Autowired
-	public EmployeeServiceimpl(EmployeeRepository employeeRepository) {
-		this.employeeRepository = employeeRepository;
-		
-	}
-
 	@Override
 	public List<Employee> listAll() {
 		// TODO Auto-generated method stub

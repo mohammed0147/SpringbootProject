@@ -1,17 +1,28 @@
 package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String firstName;
 	private String lastName;
@@ -20,8 +31,37 @@ public class Employee {
 	private long phoneNumber;
 	private Date dob;
 	private String bloodGroup;
+	
+	
+	
+  @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "reference_id")
+ 	private Reference reference;
+	
+ // @JsonBackReference
+	public Reference getReference() {
+		return reference;
+	}
+	
+	public void setReference(Reference reference) {
+		this.reference = reference;
+	}
 
-	public long getId() {
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "alternativeContacts_id")
+    private AlternativeContacts alternative;
+
+	//@JsonBackReference
+	public AlternativeContacts getAlternative() {
+		return alternative;
+	}
+
+	public void setAlternative(AlternativeContacts alternative) {
+		this.alternative = alternative;
+	}
+	
+	 
+		public long getId() {
 		return id;
 	}
 
