@@ -1,5 +1,6 @@
 package com.employee.spring_boot_employee.domain;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,8 +26,8 @@ public class AlternativeContacts {
 	private String alternativeName;
 	private String alternativeEmail;
 	
-	@OneToMany(mappedBy = "alternative", cascade = CascadeType.ALL)
-	private List<Employee> employee;
+	/*@OneToMany(mappedBy = "alternativeContacts", cascade = CascadeType.ALL)
+	 private List<Employee> employee;
 	
 	//@JsonManagedReference
 	public List<Employee> getEmployee() {
@@ -35,6 +36,18 @@ public class AlternativeContacts {
 	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}
+*/
+	
+@OneToMany(mappedBy = "alternative", cascade = CascadeType.ALL)
+	
+	private List<Employee> employee;
+	/*public List<Employee> getEmployee() {
+		return employee;
+	}
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
+	*/
 	public long getId() {
 		return id;
 	}

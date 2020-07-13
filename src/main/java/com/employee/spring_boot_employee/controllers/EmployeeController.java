@@ -1,7 +1,6 @@
 package com.employee.spring_boot_employee.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,11 +24,11 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
+	
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
 	}
-
 	@PostMapping("/employees")
 	public Employee CreateEmployee(@Validated @RequestBody Employee employee) {
 		return employeeRepository.save(employee);

@@ -11,8 +11,6 @@
   <name>spring-boot-employee</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
-  
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -20,12 +18,15 @@
   </properties>
 
  <dependencies>
-           <dependency>
+ 
+ 
+ <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-test</artifactId>
     <scope>test</scope>
   </dependency>
-      
+  <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+
   <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-web</artifactId>
@@ -35,11 +36,12 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
  </dependency>
-  
+ <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
+
  
-   
   
-    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+  
+ <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 <dependency>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-core</artifactId>
@@ -59,13 +61,14 @@
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-       <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-        </plugin>
+       
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>

@@ -1,9 +1,7 @@
 package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
-
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,10 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "employee")
 public class Employee {
@@ -32,26 +28,24 @@ public class Employee {
 	private Date dob;
 	private String bloodGroup;
 	
-	
-	
-  @ManyToOne(cascade = CascadeType.ALL)
-   @JoinColumn(name = "reference_id")
- 	private Reference reference;
-	
- // @JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "reference_id")
+	private Reference reference;
+
+	// @JsonBackReference
 	public Reference getReference() {
 		return reference;
 	}
-	
+
 	public void setReference(Reference reference) {
 		this.reference = reference;
 	}
 
 	@ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "alternativeContacts_id")
-    private AlternativeContacts alternative;
+	@JoinColumn(name = "alternativeContacts_id")
+	private AlternativeContacts alternative;
 
-	//@JsonBackReference
+	// @JsonBackReference
 	public AlternativeContacts getAlternative() {
 		return alternative;
 	}
@@ -59,9 +53,20 @@ public class Employee {
 	public void setAlternative(AlternativeContacts alternative) {
 		this.alternative = alternative;
 	}
+
+	@ManyToOne(cascade =CascadeType.ALL)
+	@JoinColumn(name = "experienceDetails_sNo")
+	private ExperienceDetails experienceDetails;
 	
-	 
-		public long getId() {
+	public ExperienceDetails getExperienceDetails() {
+		return experienceDetails;
+	}
+
+	public void setExperienceDetails(ExperienceDetails experienceDetails) {
+		this.experienceDetails = experienceDetails;
+	}
+
+	public long getId() {
 		return id;
 	}
 

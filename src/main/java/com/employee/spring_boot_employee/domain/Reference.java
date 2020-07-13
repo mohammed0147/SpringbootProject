@@ -1,6 +1,7 @@
 package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -47,12 +48,14 @@ public class Reference {
 	 private List<Employee> employee;
 	
 	//@JsonManagedReference
-	public List<Employee> getEmployee() {
+	/*public List<Employee> getEmployee() {
 		return employee;
 	}
 	public void setEmployee(List<Employee> employee) {
 		this.employee = employee;
 	}
+	*/
+	
 	
 		public long getId() {
 		return id;
