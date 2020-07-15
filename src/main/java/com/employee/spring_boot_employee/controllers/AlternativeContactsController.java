@@ -1,7 +1,6 @@
 package com.employee.spring_boot_employee.controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -34,7 +33,7 @@ public class AlternativeContactsController {
 		return alternativeContactsRepository.save(contacts);
 	}
 	
-	@GetMapping("/ref_contacts/{id}")
+	@GetMapping("/alternativeContacts/{id}")
 	public ResponseEntity<AlternativeContacts> getAlternativeContactsById(@PathVariable(value = "id") Long employeeId)
 			throws EmployeeNotFoundException {
 		AlternativeContacts contacts = alternativeContactsRepository.findById(employeeId)
@@ -42,7 +41,7 @@ public class AlternativeContactsController {
 		return ResponseEntity.ok().body(contacts);
 	}
 	
-	@PutMapping("/ref_contacts/{id}")
+	@PutMapping("/alternativeContacts/{id}")
 	public ResponseEntity<AlternativeContacts> updateAlternativeContacts(@PathVariable(value = "id") long employeeId,
 			@RequestBody AlternativeContacts contacts) throws EmployeeNotFoundException {
 		AlternativeContacts alter = alternativeContactsRepository.findById(employeeId)
@@ -56,7 +55,7 @@ public class AlternativeContactsController {
 		}
 	}
 	
-	@DeleteMapping("/ref_contacts/{id}") 
+	@DeleteMapping("/alternativeContacts/{id}") 
 	  public ResponseEntity<?>deleteAlternativeContacts(@PathVariable(value = "id") long employeeId) throws
 	  EmployeeNotFoundException { alternativeContactsRepository.findById(employeeId)
 	                 .orElseThrow(() -> new EmployeeNotFoundException("Employee not found for this id: :" + employeeId));

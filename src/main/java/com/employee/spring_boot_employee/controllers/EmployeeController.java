@@ -1,5 +1,6 @@
 package com.employee.spring_boot_employee.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.employee.spring_boot_employee.domain.AlternativeContacts;
 import com.employee.spring_boot_employee.domain.Employee;
+import com.employee.spring_boot_employee.domain.ExperienceDetails;
+import com.employee.spring_boot_employee.domain.Reference;
 import com.employee.spring_boot_employee.exception.EmployeeNotFoundException;
 import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 
@@ -24,13 +28,36 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees() {
 		return employeeRepository.findAll();
 	}
+
 	@PostMapping("/employees")
 	public Employee CreateEmployee(@Validated @RequestBody Employee employee) {
+		List<Reference> refList = employee.getReference();
+		List<Reference> reef = new ArrayList<Reference>();
+		for (Reference ref : refList) {
+			ref.setEmployee(employee);
+			reef.add(ref);
+		}
+		employee.setReference(reef);
+		
+		List<AlternativeContacts> altcntcts = employee.getAlternativeContacts();
+		List<AlternativeContacts> alt = new ArrayList<AlternativeContacts>();
+		for (AlternativeContacts a : altcntcts) {
+			a.setEmployee(employee);
+			alt.add(a);
+		}
+		employee.setAlternativeContacts(alt);
+		
+		List<ExperienceDetails> exp=employee.getExpDetails();
+		List<ExperienceDetails> expdetails=new ArrayList<ExperienceDetails>();
+		for (ExperienceDetails e : exp ) {
+			e.setEmployee(employee);
+			expdetails.add(e);
+		}
+		employee.setExpDetails(expdetails);
 		return employeeRepository.save(employee);
 	}
 
@@ -63,10 +90,11 @@ public class EmployeeController {
 	@DeleteMapping("/employees/{id}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable(value = "id") long employeeId)
 			throws EmployeeNotFoundException {
-	     employeeRepository.findById(employeeId)
+		employeeRepository.findById(employeeId)
 				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found for this id: :" + employeeId));
 		employeeRepository.deleteById(employeeId);
 		return ResponseEntity.ok().build();
 	}
+	
 
 }

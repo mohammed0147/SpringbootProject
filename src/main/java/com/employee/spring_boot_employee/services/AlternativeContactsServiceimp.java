@@ -2,9 +2,7 @@ package com.employee.spring_boot_employee.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.employee.spring_boot_employee.domain.AlternativeContacts;
 import com.employee.spring_boot_employee.repositories.AlternativeContactsRepository;
 

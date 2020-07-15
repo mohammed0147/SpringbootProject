@@ -4,44 +4,49 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "experienceDetails")
 public class ExperienceDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long sNo;
-
-	private String preCompanyName;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+    private String preCompanyName;
 	private int experience;
 	private Date doj;
 	private Date doe;
 	private String technologies;
-	
-	@OneToMany(mappedBy = "experienceDetails", cascade = CascadeType.ALL)
-	 private List<Employee> employee;
-	
-	//@JsonManagedReference
-	/*public List<Employee> getEmployee() {
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "employee_id")
+	@JsonBackReference
+	private Employee employee;
+
+	public Employee getEmployee() {
 		return employee;
 	}
-	public void setEmployee(List<Employee> employee) {
+
+	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-	*/
-	
-	public long getsNo() {
-		return sNo;
+
+	public long getId() {
+		return id;
 	}
 
-	public void setsNo(long sNo) {
-		this.sNo = sNo;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getPreCompanyName() {
@@ -83,6 +88,5 @@ public class ExperienceDetails {
 	public void setTechnologies(String technologies) {
 		this.technologies = technologies;
 	}
-
 
 }

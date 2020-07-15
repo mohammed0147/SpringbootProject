@@ -8,4 +8,6 @@ import com.employee.spring_boot_employee.domain.ExperienceDetails;
 @Repository
 public interface ExperienceDetailsRepository extends JpaRepository<ExperienceDetails, Long> {
 
+	
+
 }

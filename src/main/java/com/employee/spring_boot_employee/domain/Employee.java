@@ -3,22 +3,22 @@ package com.employee.spring_boot_employee.domain;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "employee")
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="employee_id")
 	private long id;
 	private String firstName;
 	private String lastName;
@@ -27,46 +27,47 @@ public class Employee {
 	private long phoneNumber;
 	private Date dob;
 	private String bloodGroup;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "reference_id")
-	private Reference reference;
 
-	// @JsonBackReference
-	public Reference getReference() {
+	
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<Reference> reference;
+
+	public List<Reference> getReference() {
 		return reference;
 	}
 
-	public void setReference(Reference reference) {
+	public void setReference(List<Reference> reference) {
 		this.reference = reference;
 	}
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "alternativeContacts_id")
-	private AlternativeContacts alternative;
-
-	// @JsonBackReference
-	public AlternativeContacts getAlternative() {
-		return alternative;
-	}
-
-	public void setAlternative(AlternativeContacts alternative) {
-		this.alternative = alternative;
-	}
-
-	@ManyToOne(cascade =CascadeType.ALL)
-	@JoinColumn(name = "experienceDetails_sNo")
-	private ExperienceDetails experienceDetails;
 	
-	public ExperienceDetails getExperienceDetails() {
-		return experienceDetails;
+
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<AlternativeContacts> alternativeContacts;
+
+	public List<AlternativeContacts> getAlternativeContacts() {
+		return alternativeContacts;
 	}
 
-	public void setExperienceDetails(ExperienceDetails experienceDetails) {
-		this.experienceDetails = experienceDetails;
+	public void setAlternativeContacts(List<AlternativeContacts> alternativeContacts) {
+		this.alternativeContacts = alternativeContacts;
+	}
+	
+
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<ExperienceDetails> expDetails;
+
+	public List<ExperienceDetails> getExpDetails() {
+		return expDetails;
 	}
 
-	public long getId() {
+	public void setExpDetails(List<ExperienceDetails> expDetails) {
+		this.expDetails = expDetails;
+	}
+	
+  public long getId() {
 		return id;
 	}
 
