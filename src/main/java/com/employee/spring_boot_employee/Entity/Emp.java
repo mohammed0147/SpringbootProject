@@ -2,6 +2,7 @@ package com.employee.spring_boot_employee.Entity;
 
 import java.util.Date;
 
+
 public class Emp {
 	
 	private long id;
@@ -48,6 +49,7 @@ public class Emp {
 	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
 	public Date getDob() {
 		return dob;
 	}

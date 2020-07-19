@@ -2,16 +2,17 @@ package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "employee")
@@ -45,6 +46,14 @@ public class Employee {
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<AlternativeContacts> alternativeContacts;
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 
 	public List<AlternativeContacts> getAlternativeContacts() {
 		return alternativeContacts;
@@ -115,13 +124,7 @@ public class Employee {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
+	
 
 	public String getBloodGroup() {
 		return bloodGroup;
