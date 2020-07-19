@@ -1,12 +1,17 @@
 package com.employee.spring_boot_employee.domain;
 
-import java.util.Date;
+//import java.util.Date;
+import java.util.Locale;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 @Table(name ="experience")
@@ -17,8 +22,14 @@ public class ExperienceDetails {
 	private int sNo;
 	private String preCompanyName;
 	private int experience;
-	private Date doj;
-	private Date doe;
+	@JsonFormat(pattern = "yyyy-mm-dd",shape = Shape.STRING)
+	@Column(name = "doj")
+	private Locale doj;
+	
+	@JsonFormat(pattern = "yyyy-mm-dd",shape = Shape.STRING)
+	@Column(name = "doe")
+	private Locale doe;
+	
 	private String technologies;
 	
 	
@@ -34,16 +45,19 @@ public class ExperienceDetails {
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
-	public Date getDoj() {
+	
+	
+	
+	public Locale getDoj() {
 		return doj;
 	}
-	public void setDoj(Date doj) {
+	public void setDoj(Locale doj) {
 		this.doj = doj;
 	}
-	public Date getDoe() {
+	public Locale getDoe() {
 		return doe;
 	}
-	public void setDoe(Date doe) {
+	public void setDoe(Locale doe) {
 		this.doe = doe;
 	}
 	public String getTechnologies() {

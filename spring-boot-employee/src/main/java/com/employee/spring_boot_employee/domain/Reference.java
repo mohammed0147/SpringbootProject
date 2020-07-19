@@ -1,8 +1,10 @@
 package com.employee.spring_boot_employee.domain;
 
-import java.util.Date;
+//import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 @Entity
 @Table(name= "reference")
@@ -21,7 +26,10 @@ public class Reference {
 	private String refFirstName;
 	private String refLastName;
 	private String email;
-	private Date dob;
+	@JsonFormat(pattern = "yyyy-mm-dd",shape = Shape.STRING)
+	@Column(name = "dob")
+	private Locale dob;
+	
 	private String bloodGroup;
 	private long phoneNum;
 	
@@ -62,10 +70,13 @@ public class Reference {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getDob() {
+	
+	
+	
+	public Locale getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(Locale dob) {
 		this.dob = dob;
 	}
 	public String getBloodGroup() {
