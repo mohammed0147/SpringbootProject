@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "employee")
+
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,7 +42,6 @@ public class Employee {
 		this.reference = reference;
 	}
 	
-
 	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<AlternativeContacts> alternativeContacts;

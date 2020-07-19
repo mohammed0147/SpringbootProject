@@ -1,8 +1,11 @@
 package com.employee.spring_boot_employee.services;
 
 import java.util.List;
-import com.employee.spring_boot_employee.domain.Reference;
 
+import org.springframework.stereotype.Service;
+
+import com.employee.spring_boot_employee.domain.Reference;
+@Service
 public interface ReferenceService {
 
 	List<Reference> listAll();
@@ -13,4 +16,7 @@ public interface ReferenceService {
 
     void delete(Long id);
 
+   List<com.employee.spring_boot_employee.Entity.Ref> getByEmployeeId(Long employee_id);
+   
+   
 }

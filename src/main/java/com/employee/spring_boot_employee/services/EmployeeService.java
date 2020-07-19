@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.employee.spring_boot_employee.domain.Employee;
 
-
-
 public interface EmployeeService {
 	List<Employee> listAll();
 
