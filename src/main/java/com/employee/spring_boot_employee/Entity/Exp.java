@@ -1,13 +1,14 @@
 package com.employee.spring_boot_employee.Entity;
 
 import java.util.Date;
+import java.util.Locale;
 
 public class Exp {
 	private long id;
     private String preCompanyName;
 	private int experience;
-	private Date doj;
-	private Date doe;
+	private Locale doj;
+	private Locale doe;
 	private String technologies;
 	private Emp emp;
 	
@@ -35,18 +36,21 @@ public class Exp {
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
-	public Date getDoj() {
+	
+	public Locale getDoj() {
 		return doj;
 	}
-	public void setDoj(Date doj) {
+	public void setDoj(Locale doj) {
 		this.doj = doj;
 	}
-	public Date getDoe() {
+	public Locale getDoe() {
 		return doe;
 	}
-	public void setDoe(Date doe) {
+	public void setDoe(Locale doe) {
 		this.doe = doe;
 	}
+
+	
 	public String getTechnologies() {
 		return technologies;
 	}

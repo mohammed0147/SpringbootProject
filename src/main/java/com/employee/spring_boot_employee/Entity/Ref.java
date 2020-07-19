@@ -1,6 +1,7 @@
 package com.employee.spring_boot_employee.Entity;
 
 import java.util.Date;
+import java.util.Locale;
 
 import com.employee.spring_boot_employee.domain.Employee;
 
@@ -10,7 +11,7 @@ public class Ref {
 	private String refFirstName;
 	private String refLastName;
 	private String email;
-	private Date dob;
+	private Locale dob;
 	private String bloodGroup;
 	private long phoneNum;
 	private Emp emp;
@@ -46,10 +47,11 @@ public class Ref {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getDob() {
+	
+	public Locale getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(Locale dob) {
 		this.dob = dob;
 	}
 	public String getBloodGroup() {

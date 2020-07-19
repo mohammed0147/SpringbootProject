@@ -1,6 +1,8 @@
 package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
+import java.util.Locale;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +29,7 @@ public class Reference {
 	private String refFirstName;
 	private String refLastName;
 	private String email;
-	private Date dob;
+	private Locale dob;
 	private String bloodGroup;
 	private long phoneNum;
 
@@ -76,11 +78,13 @@ public class Reference {
 		this.email = email;
 	}
 
-	public Date getDob() {
+	
+
+	public Locale getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(Locale dob) {
 		this.dob = dob;
 	}
 

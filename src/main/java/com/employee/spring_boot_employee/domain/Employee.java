@@ -1,8 +1,8 @@
 package com.employee.spring_boot_employee.domain;
 
-import java.util.Date;
-import java.util.List;
+//import java.util.Date;
 import java.util.Locale;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,7 +27,9 @@ public class Employee {
 	private String primaryAddress;
 	private String secondaryAddress;
 	private long phoneNumber;
-	private Date dob;
+	@JsonFormat(pattern = "yyyy-mm-dd",shape = Shape.STRING)
+	@Column(name = "dob")
+	private Locale dob;
 	private String bloodGroup;
 
 	
@@ -47,13 +49,14 @@ public class Employee {
 	@JsonManagedReference
 	private List<AlternativeContacts> alternativeContacts;
 
-	public Date getDob() {
+	public Locale getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(Locale dob) {
 		this.dob = dob;
 	}
+
 
 	public List<AlternativeContacts> getAlternativeContacts() {
 		return alternativeContacts;

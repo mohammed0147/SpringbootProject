@@ -1,6 +1,7 @@
 package com.employee.spring_boot_employee.Entity;
 
-import java.util.Date;
+//import java.util.Date;
+import java.util.Locale;
 
 
 public class Emp {
@@ -11,7 +12,7 @@ public class Emp {
 	private String primaryAddress;
 	private String secondaryAddress;
 	private long phoneNumber;
-	private Date dob;
+	private Locale dob;
 	private String bloodGroup;
 	public long getId() {
 		return id;
@@ -50,10 +51,10 @@ public class Emp {
 		this.phoneNumber = phoneNumber;
 	}
 	
-	public Date getDob() {
+	public Locale getDob() {
 		return dob;
 	}
-	public void setDob(Date dob) {
+	public void setDob(Locale dob) {
 		this.dob = dob;
 	}
 	public String getBloodGroup() {
