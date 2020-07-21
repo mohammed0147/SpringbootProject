@@ -1,7 +1,6 @@
 package com.employee.spring_boot_employee.controllers;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.employee.spring_boot_employee.domain.AlternativeContacts;
 import com.employee.spring_boot_employee.domain.Employee;
 import com.employee.spring_boot_employee.domain.ExperienceDetails;
+import com.employee.spring_boot_employee.domain.PrimaryAddress;
 import com.employee.spring_boot_employee.domain.Reference;
 import com.employee.spring_boot_employee.exception.EmployeeNotFoundException;
 import com.employee.spring_boot_employee.repositories.EmployeeRepository;
@@ -36,6 +35,15 @@ public class EmployeeController {
 
 	@PostMapping("/employees")
 	public Employee CreateEmployee(@Validated @RequestBody Employee employee) {
+		
+		List<PrimaryAddress> address = employee.getPrimaryAddress();
+		List<PrimaryAddress> addr = new ArrayList<PrimaryAddress>();
+		for (PrimaryAddress pt : address) {
+			pt.setEmployee(employee);
+			addr.add(pt);
+		}
+		employee.setPrimaryAddress(addr);
+		
 		List<Reference> refList = employee.getReference();
 		List<Reference> reef = new ArrayList<Reference>();
 		for (Reference ref : refList) {

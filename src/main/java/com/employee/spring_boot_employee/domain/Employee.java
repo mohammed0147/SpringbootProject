@@ -24,7 +24,8 @@ public class Employee {
 	private long id;
 	private String firstName;
 	private String lastName;
-	private String primaryAddress;
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+	private List<PrimaryAddress> primaryAddress;
 	private String secondaryAddress;
 	private long phoneNumber;
 	@JsonFormat(pattern = "yyyy-mm-dd",shape = Shape.STRING)
@@ -103,20 +104,21 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public String getPrimaryAddress() {
-		return primaryAddress;
-	}
-
-	public void setPrimaryAddress(String primaryAddress) {
-		this.primaryAddress = primaryAddress;
-	}
-
 	public String getSecondaryAddress() {
 		return secondaryAddress;
 	}
 
 	public void setSecondaryAddress(String secondaryAddress) {
 		this.secondaryAddress = secondaryAddress;
+	}
+
+	
+	public List<PrimaryAddress> getPrimaryAddress() {
+		return primaryAddress;
+	}
+
+	public void setPrimaryAddress(List<PrimaryAddress> primaryAddress) {
+		this.primaryAddress = primaryAddress;
 	}
 
 	public long getPhoneNumber() {
@@ -126,8 +128,6 @@ public class Employee {
 	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	
 
 	public String getBloodGroup() {
 		return bloodGroup;

@@ -2,7 +2,6 @@ package com.employee.spring_boot_employee.domain;
 
 import java.util.Date;
 import java.util.Locale;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -77,8 +76,6 @@ public class Reference {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
 
 	public Locale getDob() {
 		return dob;

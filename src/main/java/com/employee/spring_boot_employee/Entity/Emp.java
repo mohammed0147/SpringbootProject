@@ -1,7 +1,10 @@
 package com.employee.spring_boot_employee.Entity;
 
+import java.util.List;
 //import java.util.Date;
 import java.util.Locale;
+
+import com.employee.spring_boot_employee.domain.PrimaryAddress;
 
 
 public class Emp {
@@ -9,7 +12,7 @@ public class Emp {
 	private long id;
 	private String firstName;
 	private String lastName;
-	private String primaryAddress;
+	private List<PrimaryAddress> primaryAddress;
 	private String secondaryAddress;
 	private long phoneNumber;
 	private Locale dob;
@@ -32,10 +35,12 @@ public class Emp {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getPrimaryAddress() {
+	
+	
+	public List<PrimaryAddress> getPrimaryAddress() {
 		return primaryAddress;
 	}
-	public void setPrimaryAddress(String primaryAddress) {
+	public void setPrimaryAddress(List<PrimaryAddress> primaryAddress) {
 		this.primaryAddress = primaryAddress;
 	}
 	public String getSecondaryAddress() {
