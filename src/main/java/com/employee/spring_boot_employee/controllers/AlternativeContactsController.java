@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.employee.spring_boot_employee.domain.AlternativeContacts;
+import com.employee.spring_boot_employee.domain.Employee;
 import com.employee.spring_boot_employee.domain.Reference;
 import com.employee.spring_boot_employee.exception.EmployeeNotFoundException;
 import com.employee.spring_boot_employee.repositories.AlternativeContactsRepository;
+import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 import com.employee.spring_boot_employee.services.AlternativeContactsService;
 
 @RestController
@@ -28,6 +30,9 @@ public class AlternativeContactsController {
 	
 	@Autowired
 	AlternativeContactsService alternativeContactsService;
+	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	 
 	@GetMapping("/alternativeContacts")
 	public List<AlternativeContacts> getAllAlternativeContacts() {
@@ -39,12 +44,29 @@ public class AlternativeContactsController {
 		return alternativeContactsRepository.save(contacts);
 	}
 	
+	@PostMapping("/employee/{employee_id}/contact")
+	public Employee CreateAltByEmp(@Validated @RequestBody List<AlternativeContacts> var,
+			@PathVariable(value = "employee_id") Long employeeId) {
+		return alternativeContactsService.CreateAltByEmp(var, employeeId);
+
+	}
+	
 	@GetMapping("/alternativeContacts/{id}")
 	public ResponseEntity<AlternativeContacts> getAlternativeContactsById(@PathVariable(value = "id") Long employeeId)
 			throws EmployeeNotFoundException {
 		AlternativeContacts contacts = alternativeContactsRepository.findById(employeeId)
 				.orElseThrow(() -> new EmployeeNotFoundException("Employee not found for this id: :" + employeeId));
 		return ResponseEntity.ok().body(contacts);
+	}
+	
+	@PutMapping("/employee/{employee_id}/contact/{contact_id}")
+	public ResponseEntity<AlternativeContacts> updateAltByEmp(@PathVariable(value = "employee_id") long employeeId,
+			@PathVariable(value = "contact_id") long alternativeContactsId, @RequestBody  AlternativeContacts altDetails) {
+		AlternativeContacts ac = alternativeContactsRepository.getAltByEmpIdAndAltId(employeeId, alternativeContactsId);
+		ac.setAlternativeName(altDetails.getAlternativeEmail());
+		ac.setAlternativeName(altDetails.getAlternativeName());
+		ac.setAlternativeNum(altDetails.getAlternativeNum());
+		return ResponseEntity.ok().body(alternativeContactsRepository.save(ac));
 	}
 	@Transactional
 	@GetMapping("/employees/{employee_id}/altcntct")
@@ -74,5 +96,14 @@ public class AlternativeContactsController {
 	  return ResponseEntity.ok().build();
 	  
 	  }
+	@DeleteMapping("/employees/{employee_id}/contact/{contact_id}")
+	public ResponseEntity<?> DeleteRefByEmp(@PathVariable(value = "employee_id") long employeeId,
+			@PathVariable(value = "contact_id") long alternativeContactsId) {
+		AlternativeContacts contacts = alternativeContactsRepository.getAltByEmpIdAndAltId(employeeId, alternativeContactsId);
+
+		alternativeContactsRepository.delete(contacts);
+		return ResponseEntity.ok().body("alternative deleted");
+	}
+
 	
 }

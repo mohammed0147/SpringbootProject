@@ -112,7 +112,6 @@ public class Employee {
 		this.secondaryAddress = secondaryAddress;
 	}
 
-	
 	public List<PrimaryAddress> getPrimaryAddress() {
 		return primaryAddress;
 	}

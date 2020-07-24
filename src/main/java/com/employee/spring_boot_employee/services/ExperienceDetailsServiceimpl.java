@@ -71,9 +71,18 @@ public class ExperienceDetailsServiceimpl implements ExperienceDetailsService {
 		return exp;
 
 	}
+	@Override
+	public ExperienceDetails getById(Long id) {
+		// TODO Auto-generated method stub
+		return experienceDetailsRepository.findById(id).orElse(null);
+		
+	}
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		experienceDetailsRepository.deleteById(id);
+	}
 
-  
 	
-
 	
 }

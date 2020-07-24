@@ -1,27 +1,7 @@
-package com.employee.spring_boot_employee.domain;
+package com.employee.spring_boot_employee.Entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table(name = "address")
-public class PrimaryAddress {
-
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id",nullable=false)
+public class pri {
 	private long id;
-
 	private String houseNumber;
 	private String addressLine1;
 	private String addressLine2;
@@ -30,22 +10,14 @@ public class PrimaryAddress {
 	private String country;
 	private long pincode;
 	private boolean isPrimary;
+	private Emp emp;
 	
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "employee_id")
-	@JsonBackReference
-	private Employee employee;
-	
-	
-	public Employee getEmployee() {
-		return employee;
+	public Emp getEmp() {
+		return emp;
 	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmp(Emp emp) {
+		this.emp = emp;
 	}
-	
-
 	public long getId() {
 		return id;
 	}
@@ -88,20 +60,18 @@ public class PrimaryAddress {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
 	public long getPincode() {
 		return pincode;
 	}
 	public void setPincode(long pincode) {
 		this.pincode = pincode;
 	}
+	
 	public Boolean getIsPrimary() {
 		return isPrimary;
 	}
 	public void setIsPrimary(Boolean isPrimary) {
 		this.isPrimary = isPrimary;
 	}
-	
 
-		
 }

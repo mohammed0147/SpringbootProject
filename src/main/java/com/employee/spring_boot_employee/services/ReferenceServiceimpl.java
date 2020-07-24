@@ -1,21 +1,26 @@
 package com.employee.spring_boot_employee.services;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.employee.spring_boot_employee.Entity.Emp;
 import com.employee.spring_boot_employee.Entity.Ref;
+import com.employee.spring_boot_employee.domain.Employee;
 import com.employee.spring_boot_employee.domain.Reference;
+import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 import com.employee.spring_boot_employee.repositories.ReferenceRepository;
-
+ 
 @Service
 public class ReferenceServiceimpl implements ReferenceService {
 	@Autowired
 	private ReferenceRepository referenceRepository;
 	 
+	@Autowired
+	private ReferenceService referenceService;
 	
+	@Autowired
+	private EmployeeRepository employeeRepository;
 	
 	@Override
 	public List<Reference> listAll() {
@@ -77,4 +82,20 @@ public class ReferenceServiceimpl implements ReferenceService {
 		
 		}
 
+	@Override
+	public Employee CreateRefByEmp(List<Reference> var, Long employeeId) {
+		
+		Employee employee = employeeRepository.findById(employeeId).orElse(null);
+                List<Reference> entityList = new ArrayList<Reference>();
+		for(Reference r : var){
+                        r.setEmployee(employee);
+
+                        entityList.add(r);
+                       }
+                   employee.setReference(entityList);
+		return employeeRepository.save(employee);
+	}
+
 }
+
+
