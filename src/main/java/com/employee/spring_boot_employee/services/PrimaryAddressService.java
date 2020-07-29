@@ -19,7 +19,7 @@ public interface PrimaryAddressService {
 
 	    void delete(Long id);
 	    
-	    List<pri> getByEmployeeId(Long employee_id);
+	    List<com.employee.spring_boot_employee.Entity.pri> getByEmployeeId(Long employee_id);
 
 	    Employee CreatePriByEmp(List<PrimaryAddress> var ,Long employee_id);
 }

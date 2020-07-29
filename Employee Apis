@@ -1,0 +1,65 @@
+Employee:
+---------
+
+@PostMapping("/employees")      :- to create employee.
+@GetMapping("/employees/{id}")  :- to get the details of specific employee based on id.
+@PutMapping("/employees/{id}")  :- to update the details of an employee based on id.
+@GetMapping("/employees")       :- to get all the employees.
+@DeleteMapping("/employees/{id}") :- to delete a specific employee based on id.
+
+
+Reference:
+----------
+@PostMapping("/reference") : to create reference.
+@PostMapping("/employee/{employee_id}/reference") : to create reference for specific employee based on id.
+@GetMapping("/ref_employees/{id}") : to get reference details based on id.
+@PutMapping("/employee/{employee_id}/reference/{reference_id}") : to update the reference details of specific employee based on id.
+@GetMapping("/employees/{employee_id}/reference") : get the references of specific employee id.
+@PutMapping("/ref_employees/{id}"): to update reference details.
+@GetMapping("/reference") : to get all references.
+@DeleteMapping("/ref_employees/{id}"): delete references based on id.
+@DeleteMapping("/employees/{employee_id}/reference/{reference_id}"): delete reference of specific employee based on id.
+
+
+ExperienceDetails:
+-------------------
+@PostMapping("/experienceDetails"): to create experienceDetails.
+@PutMapping("/experienceDetails/{id}"): to update experiencedetails based on id.
+@GetMapping("/employees/{employee_id}/experience"): to get experience details of specific employee based on id.
+@GetMapping("/experienceDetails"):to get experience details.
+@DeleteMapping("/experienceDetails/{id}"):to delete experience details based on id.
+
+AlternativeContacts:
+--------------------
+@PostMapping("/alternativeContacts"):to create alternative contacts.
+@PostMapping("/employee/{employee_id}/contact"):to create alternativeContacts  for specific employee based on id.
+@GetMapping("/alternativeContacts/{id}"): to get alternativeContacts details based on id.
+@PutMapping("/alternativeContacts/{id}"):to update alternativeContacts details.
+@PutMapping("/employee/{employee_id}/contact/{contact_id}"):to update alternativeContacts details of specific employee based on id.
+@GetMapping("/employees/{employee_id}/altcntct"):to get  alternativeContacts details of specific employee based on id.
+@GetMapping("/alternativeContacts"):to get alternativeContacts details.
+@DeleteMapping("/alternativeContacts/{id}") :to delete alternativeContacts details based on id.
+@DeleteMapping("/employees/{employee_id}/contact/{contact_id}"):delete alternativeContacts of specific employee based on id.
+
+Address:
+---------
+@PostMapping("/primaryAddress"):to create address.
+@PostMapping("/employee/{employee_id}/primaryAddress"):to create address for specific employee based on id.
+@PutMapping("/primaryAddress/{id}"): to update address details based on id.
+@GetMapping("/primaryAddress/{id}"):to get address based on id.
+@GetMapping("/employees/{employee_id}/primaryAddress") : get all address of specific employee id.
+@PutMapping("/employee/{employee_id}/primaryAddress/{address_id}"):to update address details of specific employee based on id
+@GetMapping("/primaryAddress"):to get address.
+@DeleteMapping("/primaryAddress/{id}") :to delete details based on id.
+@DeleteMapping("/employees/{employee_id}/primaryAddress/{address_id}"): to delete address of specific employee based on id.
+
+Resumeupload:
+-------------
+@PostMapping("/uploadFile"):to upload a resume.
+@PostMapping("/uploadMultipleFiles"):to upload multiple files.
+
+ResumeDownload:
+----------------
+@GetMapping("/downloadFile/{fileName:.+}"): to download the uploaded file.
+    
+    

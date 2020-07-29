@@ -45,15 +45,20 @@ public class ExperienceDetailsController {
 		return experienceDetailsRepository.save(exp);
 		}
 	
+	@PostMapping("/employee/{employee_id}/experience")
+	public Employee CreateExpByEmp(@Validated @RequestBody List<ExperienceDetails> var,
+			@PathVariable(value = "employee_id") Long employeeId) {
+		return experienceDetailsService.CreateExpByEmp(var, employeeId);
+
+	}
+
 	
 	@Transactional
 	@GetMapping("/employees/{employee_id}/experience")
-	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.Exp>>getEmployeeByReference(@PathVariable(value = "employee_id")Long employee_id,@RequestBody ExperienceDetails expDetails){
+	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.Exp>> getEmployeeByExperience(@PathVariable(value = "employee_id")Long employee_id,@RequestBody(required=false) ExperienceDetails expDetails){
 		List<com.employee.spring_boot_employee.Entity.Exp> v= experienceDetailsService.getByEmployeeId(employee_id);
-     
-		return ResponseEntity.ok().body(v);
+     return ResponseEntity.ok().body(v);
 	}
-	
 	
 	
 	@PutMapping("/experienceDetails/{id}")
@@ -69,6 +74,17 @@ public class ExperienceDetailsController {
 			exp.setTechnologies(expDetails.getTechnologies());
 			return ResponseEntity.ok().body(exp);
 		}
+	}
+	@PutMapping("/employee/{employee_id}/experience/{experience_id}")
+	public ResponseEntity<ExperienceDetails> updateRefByEmp(@PathVariable(value = "employee_id") long employeeId,
+			@PathVariable(value = "experience_id") long experienceId, @RequestBody ExperienceDetails expDetails) {
+		ExperienceDetails exp = experienceDetailsRepository.getExpByEmpIdAndExpId(employeeId,experienceId);
+		exp.setPreCompanyName(expDetails.getPreCompanyName());
+		exp.setExperience(expDetails.getExperience());
+		exp.setDoe(expDetails.getDoe());
+		exp.setDoj(expDetails.getDoj());
+		exp.setTechnologies(expDetails.getTechnologies());
+		return ResponseEntity.ok().body(experienceDetailsRepository.save(exp));
 	}
 	
 	  @DeleteMapping("/experienceDetails/{id}") 

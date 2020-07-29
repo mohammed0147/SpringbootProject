@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.employee.spring_boot_employee.domain.Employee;
 import com.employee.spring_boot_employee.domain.PrimaryAddress;
+import com.employee.spring_boot_employee.domain.Reference;
 import com.employee.spring_boot_employee.exception.EmployeeNotFoundException;
 import com.employee.spring_boot_employee.repositories.EmployeeRepository;
 import com.employee.spring_boot_employee.repositories.PrimaryAddressRepository;
@@ -73,6 +75,14 @@ public class PrimaryAddressController {
 	//return ResponseEntity.ok().body(referenceRepository.save(reference));
 	}
 	
+	@Transactional
+	@GetMapping("/employees/{employee_id}/primaryAddress")
+	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.pri>> getEmployeeByAddress(
+			@PathVariable(value = "employee_id") Long employee_id, @RequestBody(required=false) Reference refDetails) {
+		List<com.employee.spring_boot_employee.Entity.pri> v = primaryAddressService.getByEmployeeId(employee_id);
+
+		return ResponseEntity.ok().body(v);
+	}
 	@GetMapping("/primaryAddress/{id}")
 	public ResponseEntity<PrimaryAddress> getPrimaryAddressById(@PathVariable(value = "id") Long employeeId)
 			throws EmployeeNotFoundException {

@@ -18,5 +18,7 @@ public interface ExperienceDetailsService {
 
 	List<com.employee.spring_boot_employee.Entity.Exp> getByEmployeeId(Long employee_id);
 	
+	Employee CreateExpByEmp(List<ExperienceDetails> var ,Long employee_id);
+	
 	void delete(Long id);
 }

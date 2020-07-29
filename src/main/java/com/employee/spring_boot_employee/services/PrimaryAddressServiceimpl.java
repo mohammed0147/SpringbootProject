@@ -36,13 +36,13 @@ public class PrimaryAddressServiceimpl  implements PrimaryAddressService{
 	
 
 	@Override
-	public List<pri> getByEmployeeId(Long employee_id) {
+	public List<com.employee.spring_boot_employee.Entity.pri> getByEmployeeId(Long employee_id) {
 	// TODO Auto-generated method stub
 	List<PrimaryAddress> pri=primaryAddressRepository.getByEmployeeId(employee_id);
 	return toDomain(pri);
 	}
 	
-	public List<pri> toDomain(List<PrimaryAddress> primaryAddress) {
+	public List<com.employee.spring_boot_employee.Entity.pri> toDomain(List<PrimaryAddress> primaryAddress) {
 		// TODO Auto-generated method stub
 		List<pri> r=new ArrayList<>();
 		for(PrimaryAddress var : primaryAddress) {
