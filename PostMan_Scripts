@@ -1,0 +1,269 @@
+http://localhost:8080/api/employees--->post
+
+1)
+---
+{
+"firstName":"vineesha",
+"lastName":"Bendadi",
+"primaryAddress":[{
+    
+    "houseNumber":"4-4-80",
+	"addressLine1":"riccabazar",
+    "addressLine2":"mustafaNagar",
+	"city":"khammam",
+	"state":"Telangana",
+    "country":"India",
+	"pincode":"507001",
+    "isPrimary":false
+
+}],
+"secondaryAddress":"Hyd",
+"phoneNumber":9090900990,
+"dob":"1998-02-03",
+"bloodGroup":"OPositive",
+"reference":[{
+    "refFirstName":"usha",
+    "refLastName":"rapol",
+    "email":"usha@gmail.com",
+    "dob":"1998-08-08",
+    "bloodGroup":"ABpositive",
+    "phoneNum":9888878888
+} ] ,
+"alternativeContacts":[{
+"alternativeNum":9005656666,
+"alternativeName":"mnsa",
+"alternativeemail":"mnsa@gmail.com"
+}],
+  "expDetails":[{
+    "preCompanyName":"hghradius",
+    "experience":2,
+    "doj":"2018-03-05",
+    "doe":"2020-08-05",
+    "technologies":"java"
+}]
+}
+
+2)
+---
+{
+"firstName":"vamsi",
+"lastName":"jagannadam",
+"primaryAddress":[{
+    
+    "houseNumber":"7-8-90",
+	"addressLine1":"ramnagar",
+    "addressLine2":"rahimnagar",
+	"city":"meerutt",
+	"state":"up",
+    "country":"India",
+	"pincode":"519",
+    "isPrimary":false
+
+}],
+"secondaryAddress":"hyd",
+"phoneNumber":9096754323,
+"dob":"1997-06-08",
+"bloodGroup":"Onegative",
+"reference":[{
+    "refFirstName":"sushanth",
+    "refLastName":"sindya",
+    "email":"sushanth@gmail.com",
+    "dob":"1998-08-08",
+    "bloodGroup":"ABpositive",
+    "phoneNum":9888878888
+} ] ,
+"alternativeContacts":[{
+"alternativeNum":7865434678,
+"alternativeName":"harsha",
+"alternativeEmail":"harsha@gmail.com"
+}],
+  "expDetails":[{
+    "preCompanyName":"bluewale",
+    "experience":5,
+    "doj":"2013-08-08",
+    "doe":"2027-04-03",
+    "technologies":"python"
+}]
+}
+
+3)
+---
+{
+"firstName":"ilyas",
+"lastName":"mohameed",
+"primaryAddress":[{
+    
+    "houseNumber":"4-4-80",
+	"addressLine1":"hemNagar",
+    "addressLine2":"mereeaNagar",
+	"city":"kakinada",
+	"state":"Andhrapradesh",
+    "country":"India",
+	"pincode":"508901",
+    "isPrimary":false
+
+}],
+"secondaryAddress":"banglore",
+"phoneNumber":6903067590,
+"dob":"1999-05-12",
+"bloodGroup":"Bpositive",
+"reference":[{
+    "refFirstName":"vijay",
+    "refLastName":"kovind",
+    "email":"vijay@gmail.com",
+    "dob":"1995-11-26",
+    "bloodGroup":"ABpositive",
+    "phoneNum":9895312121
+} ] ,
+"alternativeContacts":[{
+"alternativeNum":9005656666,
+"alternativeName":"nivin",
+"alternativeEmail":"nivin@gmail.com"
+}],
+  "expDetails":[{
+    "preCompanyName":"cyient",
+    "experience":3,
+    "doj":"2017-08-26",
+    "doe":"2020-11-15",
+    "technologies":"DotNet"
+}]
+}
+********************************************
+
+http://localhost:8080/api/employees/1----->put
+
+1)
+{
+"firstName":"vineesha",
+"lastName":"Bendadi",
+"primaryAddress":[{
+    
+    "houseNumber":"4-4-80",
+	"addressLine1":"mamilagudam",
+      "addressLine2":"mustafaNagar",
+	"city":"khammam",
+	"state":"Telangana",
+    "country":"India",
+	"pincode":"507001",
+    "isPrimary":false
+
+}],
+"secondaryAddress":"Hyd",
+"phoneNumber":9090900990,
+"dob":"1998-02-03",
+"bloodGroup":"OPositive",
+"reference":[{
+    "refFirstName":"usha",
+    "refLastName":"rapol",
+    "email":"usha@gmail.com",
+    "dob":"1998-08-08",
+    "bloodGroup":"ABpositive",
+    "phoneNum":9888878888
+} ] ,
+"alternativeContacts":[{
+"alternativeNum":9005656666,
+"alternativeName":"mnsa",
+"alternativeEmail":"mnsa@gmail.com"
+}],
+  "expDetails":[{
+    "preCompanyName":"hghradius",
+    "experience":2,
+    "doj":"2018-03-05",
+    "doe":"2020-08-05",
+    "technologies":"java"
+}]
+}
+
+*********************************
+http://localhost:8080/api/employee/1/reference-------post
+1)
+
+[{
+    "id":1,
+    "refFirstName":"sushmitha",
+    "refLastName":"naidu",
+    "email":"sushmitha@gmail.com",
+    "dob":"1998-08-08",
+    "bloodGroup":"ABpositive",
+    "phoneNum":9888878888
+}
+]
+
+2)http//localhost:8080/api/employee/1/reference/1------->put
+
+{
+    "id": 1,
+    "refFirstName": "lekhya",
+    "refLastName": "nakkanaboina",
+    "email": "lekhya@gmail.com",
+    "dob": "1998_08_08",
+    "bloodGroup": "Opositive",
+    "phoneNum": 9888878888
+}
+
+**************************************************
+http://localhost:8080/api/employee/1/contact-----post
+
+1)
+
+[{
+     "id":2,
+      "alternativeNum": 6805656567,
+      "alternativeName": "lily",           
+      "alternativeEmail":"lily@gmail.com"
+}
+]
+
+http://localhost:8080/api/employee/3/contact/3----put
+2)
+
+{
+    "alternativeNum":9045677632,
+    "alternativeName":"nischay",
+    "alternativeEmail":"nis@gmail.com"
+}
+
+***************************************************
+
+http://localhost:8080/api/employee/2/experience-----post
+1)
+[
+    {
+        "id":2,
+    "preCompanyName":"cyient",
+    "experience":2,
+    "doj":"2016-03-05",
+    "doe":"2020-07-10",
+    "technologies":"python"
+}
+]
+
+http://localhost:8080/api/employee/3/experience/3-----put
+
+2)
+{
+    "preCompanyName":"qualitlabs",
+    "experience":4,
+    "doj":"2017-08-26",
+    "doe":"2020-11-15",
+    "technologies":"DotNet"
+}
+
+***********************************************************
+http://localhost:8080/api/employee/2/primaryAddress-----post
+
+1)
+[{
+    
+    "houseNumber":"4-4-80",
+	"addressLine1":"mamilagudam",
+      "addressLine2":"mustafaNagar",
+	"city":"khammam",
+	"state":"Telangana",
+    "country":"India",
+	"pincode":"507001",
+    "isPrimary":false
+
+}]
+
+

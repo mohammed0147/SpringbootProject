@@ -74,11 +74,12 @@ public class ReferenceContoller {
 	@Transactional
 	@GetMapping("/employees/{employee_id}/reference")
 	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.Ref>> getEmployeeByReference(
-			@PathVariable(value = "employee_id") Long employee_id, @RequestBody Reference refDetails) {
+			@PathVariable(value = "employee_id") Long employee_id, @RequestBody(required=false) Reference refDetails) {
 		List<com.employee.spring_boot_employee.Entity.Ref> v = referenceService.getByEmployeeId(employee_id);
 
 		return ResponseEntity.ok().body(v);
 	}
+
 
 	@PutMapping("/ref_employees/{id}")
 	public ResponseEntity<Reference> updateReferenceEmployee(@PathVariable(value = "id") long employeeId,

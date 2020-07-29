@@ -77,6 +77,21 @@ public class ExperienceDetailsServiceimpl implements ExperienceDetailsService {
 		return experienceDetailsRepository.findById(id).orElse(null);
 		
 	}
+	
+	@Override
+	public Employee CreateExpByEmp(List<ExperienceDetails> var, Long employeeId) {
+		
+		Employee employee = employeeRepository.findById(employeeId).orElse(null);
+                List<ExperienceDetails> entityList = new ArrayList<ExperienceDetails>();
+		for(ExperienceDetails r : var){
+                        r.setEmployee(employee);
+
+                        entityList.add(r);
+                       }
+                   employee.setExpDetails(entityList);
+		return employeeRepository.save(employee);
+	}
+
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub

@@ -63,14 +63,14 @@ public class AlternativeContactsController {
 	public ResponseEntity<AlternativeContacts> updateAltByEmp(@PathVariable(value = "employee_id") long employeeId,
 			@PathVariable(value = "contact_id") long alternativeContactsId, @RequestBody  AlternativeContacts altDetails) {
 		AlternativeContacts ac = alternativeContactsRepository.getAltByEmpIdAndAltId(employeeId, alternativeContactsId);
-		ac.setAlternativeName(altDetails.getAlternativeEmail());
+		ac.setAlternativeEmail(altDetails.getAlternativeEmail());
 		ac.setAlternativeName(altDetails.getAlternativeName());
 		ac.setAlternativeNum(altDetails.getAlternativeNum());
 		return ResponseEntity.ok().body(alternativeContactsRepository.save(ac));
 	}
 	@Transactional
 	@GetMapping("/employees/{employee_id}/altcntct")
-	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.Altcntcts>>getEmployeeByAlternative(@PathVariable(value = "employee_id")Long employee_id,@RequestBody AlternativeContacts altDetails){
+	public ResponseEntity<List<com.employee.spring_boot_employee.Entity.Altcntcts>>getEmployeeByAlternative(@PathVariable(value = "employee_id")Long employee_id,@RequestBody(required=false) AlternativeContacts altDetails){
 		List<com.employee.spring_boot_employee.Entity.Altcntcts> v= alternativeContactsService.getByEmployeeId(employee_id);
         return ResponseEntity.ok().body(v);
 	}

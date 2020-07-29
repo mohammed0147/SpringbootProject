@@ -15,6 +15,7 @@ public interface ExperienceDetailsRepository extends JpaRepository<ExperienceDet
 	@Query("select distinct al from ExperienceDetails al WHERE al.employee.id = :employee_id")
 	List<ExperienceDetails> getByEmployeeId(@Param("employee_id")Long  employee_id);
 	
-	
+	@Query("select distinct al from ExperienceDetails al WHERE al.employee.id = :employee_id AND al.id = :experienceDetails_id" )
+	ExperienceDetails getExpByEmpIdAndExpId(@Param("employee_id")Long employee_id ,@Param("experienceDetails_id")Long experienceDetails_id);
 
 	}
